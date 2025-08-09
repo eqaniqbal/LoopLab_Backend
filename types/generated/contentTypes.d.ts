@@ -400,9 +400,9 @@ export interface ApiAnnouncementAnnouncement
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -461,9 +461,9 @@ export interface ApiBadgeBadge extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -491,13 +491,13 @@ export interface ApiChatChat extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user_sender: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_tables: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -538,9 +538,9 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -573,9 +573,9 @@ export interface ApiEnrollmentEnrollment extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -608,9 +608,9 @@ export interface ApiEventRegistrationEventRegistration
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -645,10 +645,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
   };
 }
 
@@ -681,9 +677,9 @@ export interface ApiFeedbackFeedback extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -715,9 +711,9 @@ export interface ApiLeaderBoardLeaderBoard extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
   };
 }
@@ -784,10 +780,71 @@ export interface ApiLiveSessionLiveSession extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
+    user_table: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::user-table.user-table'
     >;
+  };
+}
+
+export interface ApiUserTableUserTable extends Struct.CollectionTypeSchema {
+  collectionName: 'user_tables';
+  info: {
+    displayName: 'UserTable';
+    pluralName: 'user-tables';
+    singularName: 'user-table';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    announcements: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::announcement.announcement'
+    >;
+    auth_provider: Schema.Attribute.Enumeration<['google', 'facebook']>;
+    chats: Schema.Attribute.Relation<'oneToMany', 'api::chat.chat'>;
+    chatss: Schema.Attribute.Relation<'oneToMany', 'api::chat.chat'>;
+    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    enrollments: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::enrollment.enrollment'
+    >;
+    event: Schema.Attribute.Relation<'oneToOne', 'api::event.event'>;
+    event_registrations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::event-registration.event-registration'
+    >;
+    feedbacks: Schema.Attribute.Relation<'oneToMany', 'api::feedback.feedback'>;
+    leader_boards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::leader-board.leader-board'
+    >;
+    live_sessions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::live-session.live-session'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-table.user-table'
+    > &
+      Schema.Attribute.Private;
+    profile_photo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user_badges: Schema.Attribute.Relation<'oneToMany', 'api::badge.badge'>;
+    user_email: Schema.Attribute.Email;
+    user_name: Schema.Attribute.String;
+    user_password: Schema.Attribute.String;
+    user_roles: Schema.Attribute.Enumeration<['teacher', 'student', 'admin']>;
   };
 }
 
@@ -1248,20 +1305,9 @@ export interface PluginUsersPermissionsUser
     draftAndPublish: false;
   };
   attributes: {
-    announcements: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::announcement.announcement'
-    >;
-    auth_provider: Schema.Attribute.Enumeration<
-      ['Email', 'Google', 'Facebook']
-    >;
-    badges: Schema.Attribute.Relation<'oneToMany', 'api::badge.badge'>;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    chats: Schema.Attribute.Relation<'oneToMany', 'api::chat.chat'>;
-    chats_sender: Schema.Attribute.Relation<'oneToMany', 'api::chat.chat'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1270,39 +1316,17 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    enrollments: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::enrollment.enrollment'
-    >;
-    event_registrations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::event-registration.event-registration'
-    >;
-    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
-    feedbacks: Schema.Attribute.Relation<'oneToMany', 'api::feedback.feedback'>;
-    leader_boards: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::leader-board.leader-board'
-    >;
-    live_sessions: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::live-session.live-session'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    profile_photo_url: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1310,13 +1334,9 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    Roles: Schema.Attribute.Enumeration<['Teacher', 'Student ', 'Admin']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    User_status: Schema.Attribute.Enumeration<
-      ['Active', 'Suspended ', 'Deleted']
-    >;
     username: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1348,6 +1368,7 @@ declare module '@strapi/strapi' {
       'api::leader-board.leader-board': ApiLeaderBoardLeaderBoard;
       'api::lecture.lecture': ApiLectureLecture;
       'api::live-session.live-session': ApiLiveSessionLiveSession;
+      'api::user-table.user-table': ApiUserTableUserTable;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

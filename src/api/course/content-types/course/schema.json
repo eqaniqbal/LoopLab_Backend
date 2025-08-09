@@ -20,12 +20,6 @@
     "category": {
       "type": "string"
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "courses"
-    },
     "lectures": {
       "type": "relation",
       "relation": "oneToMany",
@@ -43,6 +37,12 @@
       "relation": "oneToMany",
       "target": "api::live-session.live-session",
       "mappedBy": "course"
+    },
+    "user_table": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-table.user-table",
+      "inversedBy": "courses"
     }
   }
 }

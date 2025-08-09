@@ -21,17 +21,17 @@
     "message": {
       "type": "blocks"
     },
-    "users_permissions_user": {
+    "user_table": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
+      "target": "api::user-table.user-table",
       "inversedBy": "chats"
     },
-    "user_sender": {
+    "user_tables": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "chats_sender"
+      "target": "api::user-table.user-table",
+      "inversedBy": "chatss"
     }
   }
 }

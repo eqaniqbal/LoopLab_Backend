@@ -17,10 +17,10 @@
     "message": {
       "type": "blocks"
     },
-    "users_permissions_user": {
+    "user_table": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
+      "target": "api::user-table.user-table",
       "inversedBy": "announcements"
     }
   }

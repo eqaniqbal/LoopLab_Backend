@@ -14,16 +14,16 @@
     "earned_at": {
       "type": "datetime"
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "badges"
-    },
     "baddge": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::baddge.baddge",
+      "inversedBy": "user_badges"
+    },
+    "user_table": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-table.user-table",
       "inversedBy": "user_badges"
     }
   }

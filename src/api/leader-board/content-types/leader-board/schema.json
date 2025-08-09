@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leader_boards",
+  "info": {
+    "singularName": "leader-board",
+    "pluralName": "leader-boards",
+    "displayName": "LeaderBoard"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "score": {
+      "type": "integer"
+    },
+    "rank": {
+      "type": "integer"
+    },
+    "updatedat": {
+      "type": "datetime"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "leader_boards"
+    }
+  }
+}

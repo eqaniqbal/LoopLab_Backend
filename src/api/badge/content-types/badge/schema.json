@@ -4,27 +4,37 @@
   "info": {
     "singularName": "badge",
     "pluralName": "badges",
-    "displayName": "User_Badge"
+    "displayName": "Badge"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "earned_at": {
-      "type": "datetime"
+    "name": {
+      "type": "string"
     },
-    "baddge": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::baddge.baddge",
-      "inversedBy": "user_badges"
+    "description": {
+      "type": "text"
     },
-    "user_table": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "criteria": {
+      "type": "text"
+    },
+    "user_profiles": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::user-table.user-table",
-      "inversedBy": "user_badges"
+      "relation": "manyToMany",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "badges"
     }
   }
 }

@@ -11,17 +11,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "target_audience": {
+    "title": {
       "type": "string"
     },
-    "message": {
-      "type": "blocks"
+    "content": {
+      "type": "text"
     },
-    "user_table": {
+    "user_profile": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::user-table.user-table",
+      "target": "api::user-profile.user-profile",
       "inversedBy": "announcements"
+    },
+    "active": {
+      "type": "boolean"
     }
   }
 }

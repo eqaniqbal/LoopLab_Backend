@@ -15,34 +15,22 @@
       "type": "string"
     },
     "description": {
-      "type": "blocks"
+      "type": "text"
+    },
+    "user_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "courses"
     },
     "category": {
       "type": "string"
     },
-    "lectures": {
+    "video_lectures": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::lecture.lecture",
+      "target": "api::video-lecture.video-lecture",
       "mappedBy": "course"
-    },
-    "enrollments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::enrollment.enrollment",
-      "mappedBy": "course"
-    },
-    "live_sessions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::live-session.live-session",
-      "mappedBy": "course"
-    },
-    "user_table": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::user-table.user-table",
-      "inversedBy": "courses"
     }
   }
 }

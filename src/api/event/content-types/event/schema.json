@@ -15,22 +15,28 @@
       "type": "string"
     },
     "description": {
-      "type": "blocks"
+      "type": "text"
     },
-    "start_time": {
+    "startTime": {
       "type": "datetime"
     },
-    "end_time": {
+    "endTime": {
       "type": "datetime"
     },
     "location": {
       "type": "string"
     },
-    "event_registrations": {
+    "user_profile": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::event-registration.event-registration",
-      "mappedBy": "event"
+      "relation": "manyToOne",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "events"
+    },
+    "registerations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "eventsregisteration"
     }
   }
 }

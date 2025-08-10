@@ -11,26 +11,21 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "content": {
-      "type": "blocks"
+    "user_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "feedbacks"
     },
     "type": {
       "type": "enumeration",
       "enum": [
-        "Bug",
-        "Abuse",
-        "Report",
-        "Suggestion"
+        "feedback",
+        "report"
       ]
     },
-    "feedback_status": {
-      "type": "string"
-    },
-    "user_table": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::user-table.user-table",
-      "inversedBy": "feedbacks"
+    "content": {
+      "type": "text"
     }
   }
 }
